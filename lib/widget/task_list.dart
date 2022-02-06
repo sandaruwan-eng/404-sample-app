@@ -4,9 +4,14 @@ import 'package:sampleapp/controller/providers.dart';
 import 'package:sampleapp/models.dart/task_model.dart';
 import 'package:sampleapp/widget/widget.dart';
 
-class TaskList extends StatelessWidget {
+class TaskList extends StatefulWidget {
   const TaskList({Key? key}) : super(key: key);
 
+  @override
+  _TaskListState createState() => _TaskListState();
+}
+
+class _TaskListState extends State<TaskList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,8 +33,22 @@ class TaskList extends StatelessWidget {
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: list!.length,
-                      itemBuilder: (BuildContext context, int index) =>
-                          TaskItem(task: list[index]),
+                      itemBuilder: (BuildContext context, int index) {
+                        final item = list[index];
+                        return Dismissible(
+                          key: Key(item.title),
+                          onDismissed: (direction) {
+                            setState(() {
+                              list.removeAt(index);
+                            });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text('A one item dismissed')));
+                          },
+                          background: Container(color: Colors.red),
+                          child: TaskItem(task: list[index]),
+                        );
+                      },
                     ),
                   );
                 },
