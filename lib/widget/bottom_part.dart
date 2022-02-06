@@ -6,6 +6,7 @@ class BottomPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Expanded(
       child: Align(
         alignment: FractionalOffset.bottomCenter,
@@ -20,7 +21,7 @@ class BottomPart extends StatelessWidget {
               topRight: Radius.circular(40),
             ),
           ),
-          height: 330,
+          height: screenHeight / 2,
           width: double.infinity,
           child: const TaskList(),
         ),
