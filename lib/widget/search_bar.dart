@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sampleapp/constant/widgets_constant.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({Key? key}) : super(key: key);
@@ -6,7 +7,10 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 15.0, left: 30.0, right: 30.0),
+      padding: EdgeInsets.only(
+          top: 15.0 * WidgetsConstant.height,
+          left: 30.0 * WidgetsConstant.width,
+          right: 30.0 * WidgetsConstant.width),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -17,7 +21,7 @@ class SearchBar extends StatelessWidget {
             Radius.circular(30),
           ),
         ),
-        height: 47,
+        height: 47 * WidgetsConstant.height,
         child: const Center(
           child: TextField(
             decoration: InputDecoration(

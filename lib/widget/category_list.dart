@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sampleapp/constant/widgets_constant.dart';
 import 'package:sampleapp/widget/widget.dart';
 
 class CategoryList extends StatelessWidget {
@@ -7,27 +8,25 @@ class CategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 20 * WidgetsConstant.height),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 30.0),
-            child: Text(
+          Padding(
+            padding: EdgeInsets.only(left: 30.0 * WidgetsConstant.width),
+            child: const Text(
               'Category',
               style: TextStyle(color: Colors.white, fontSize: 19.0),
             ),
           ),
           SizedBox(
-            height: 130,
-            child: Expanded(
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 15,
-                  itemBuilder: (BuildContext context, int index) =>
-                      const CategoryListCard()),
-            ),
+            height: 140 * WidgetsConstant.height,
+            child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 15,
+                itemBuilder: (BuildContext context, int index) =>
+                    const CategoryListCard()),
           ),
         ],
       ),

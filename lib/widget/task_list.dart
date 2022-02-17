@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sampleapp/constant/widgets_constant.dart';
 import 'package:sampleapp/controller/providers.dart';
 import 'package:sampleapp/models.dart/task_model.dart';
 import 'package:sampleapp/widget/widget.dart';
@@ -14,14 +15,20 @@ class TaskList extends StatefulWidget {
 class _TaskListState extends State<TaskList> {
   @override
   Widget build(BuildContext context) {
+    final _appTheme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
+      padding: EdgeInsets.only(
+          top: 30.0 * WidgetsConstant.height,
+          left: 30.0 * WidgetsConstant.width,
+          right: 30.0 * WidgetsConstant.width),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Text(
+          Text(
             "Today task list",
-            style: TextStyle(fontSize: 20.0),
+            style: _appTheme.textTheme.headline6!.merge(
+              const TextStyle(color: Colors.black),
+            ),
           ),
           Consumer(builder: (context, ref, _) {
             AsyncValue<List<TaskModel>?> taskList = ref.watch(taskListProvider);
@@ -52,9 +59,10 @@ class _TaskListState extends State<TaskList> {
                     ),
                   );
                 },
-                loading: () => const Padding(
-                      padding: EdgeInsets.only(top: 100),
-                      child: Center(child: CircularProgressIndicator()),
+                loading: () => Padding(
+                      padding:
+                          EdgeInsets.only(top: 100.0 * WidgetsConstant.height),
+                      child: const Center(child: CircularProgressIndicator()),
                     ),
                 error: (e, stackTrace) {
                   return const Text("error");

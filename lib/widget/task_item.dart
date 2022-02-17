@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sampleapp/constant/widgets_constant.dart';
 import 'package:sampleapp/models.dart/task_model.dart';
 
 // ignore: must_be_immutable
@@ -16,7 +17,9 @@ class TaskItem extends ConsumerWidget {
     Color itemColor =
         Colors.primaries[Random().nextInt(Colors.primaries.length)];
     return Padding(
-      padding: const EdgeInsets.only(top: 10, left: 0, bottom: 10.0),
+      padding: EdgeInsets.only(
+          top: 10 * WidgetsConstant.height,
+          bottom: 10.0 * WidgetsConstant.width),
       child: InkWell(
         onTap: () {
           _showDialog(context, task);
@@ -31,12 +34,12 @@ class TaskItem extends ConsumerWidget {
                   color: Colors.white,
                 )),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0),
+              padding: EdgeInsets.only(left: 10.0 * WidgetsConstant.width),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(
-                    width: 200,
+                    width: 200 * WidgetsConstant.width,
                     child: Text(
                       task.title,
                       style: const TextStyle(

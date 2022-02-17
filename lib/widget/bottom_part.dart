@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sampleapp/constant/widgets_constant.dart';
 import 'package:sampleapp/widget/widget.dart';
 
 class BottomPart extends StatelessWidget {
@@ -6,7 +7,6 @@ class BottomPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
     return Expanded(
       child: Align(
         alignment: FractionalOffset.bottomCenter,
@@ -21,7 +21,7 @@ class BottomPart extends StatelessWidget {
               topRight: Radius.circular(40),
             ),
           ),
-          height: screenHeight / 2,
+          height: 420 * WidgetsConstant.height,
           width: double.infinity,
           child: const TaskList(),
         ),

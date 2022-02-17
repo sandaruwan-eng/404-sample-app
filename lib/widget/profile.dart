@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sampleapp/constant/widgets_constant.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -6,7 +7,8 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 70, left: 30),
+      padding: EdgeInsets.only(
+          top: 70 * WidgetsConstant.height, left: 30 * WidgetsConstant.width),
       child: Row(
         children: [
           const CircleAvatar(
@@ -18,7 +20,7 @@ class Profile extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10.0),
+            padding: EdgeInsets.only(left: 10.0 * WidgetsConstant.width),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const <Widget>[
@@ -37,9 +39,9 @@ class Profile extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          const Padding(
-            padding: EdgeInsets.only(right: 18.0),
-            child: Icon(
+          Padding(
+            padding: EdgeInsets.only(right: 18.0 * WidgetsConstant.width),
+            child: const Icon(
               Icons.more_vert,
               color: Colors.white,
             ),

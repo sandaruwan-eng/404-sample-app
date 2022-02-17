@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(
-    const ProviderScope(child: MyApp()),
+    ProviderScope(
+      child: ScreenUtilInit(
+        designSize: const Size(1440, 2880), // designSize: Size(1440, 2880),
+        builder: () {
+          return const MyApp();
+        },
+      ),
+    ),
   );
 }
 
